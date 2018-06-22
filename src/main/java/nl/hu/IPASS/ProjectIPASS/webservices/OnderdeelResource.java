@@ -1,8 +1,10 @@
 package nl.hu.IPASS.ProjectIPASS.webservices;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -11,6 +13,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -71,12 +74,35 @@ public class OnderdeelResource {
 		return array.toString();
 	}
 	
+	@PUT
+	@Produces("application/json")
+	public Response updateOnderdeel(@Context SecurityContext sc,
+			@FormParam("naam") String naam,
+			@FormParam("prijs") double prijs, 
+			@FormParam("beschrijving") String beschrijving) throws SQLException {
+		
+		OnderdeelService service = ServiceProvider.getOnderdeelService();
+		
+		Onderdeel onderdeel = service.updateOnderdeel(naam, prijs, beschrijving);
+
+		if (onderdeel == null) {
+			Map<String, String> messages = new HashMap<String, String>();
+			messages.put("error", "Onderdeel does not exist!");
+			return Response.status(409).entity(messages).build();
+		}
+		return Response.ok(onderdeel).build();
+	}
+	
 	@POST
 	@Produces("application/json")
-	public Response createCountry(@Context SecurityContext sc,
+	public Response createOnderdeel(@Context SecurityContext sc,
 			@FormParam("naam") String naam,
 			@FormParam("prijs") double prijs, 
 			@FormParam("beschrijving") String beschrijving) {
+		
+		System.out.print("naam: " + naam);
+		System.out.print("prijs: " + prijs);
+		System.out.print("beschrijving" + beschrijving);
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		

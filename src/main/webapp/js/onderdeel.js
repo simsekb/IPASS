@@ -10,6 +10,7 @@ $(document).on('click', '#deleteButton', function(e) {
 
 $(document).on('click', '#wijzigButton', function(e) {
 	//console.log(e.target.value);
+	wijzigOnderdeel(e.target.value);
 });
 
 $("#toevoegButton").click(function() {
@@ -49,6 +50,17 @@ $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+
+function wijzigOnderdeel(naam) {
+    var formData = new FormData(document.querySelector("#onderdeel-wijzigen"));
+    var encData = new URLSearchParams(formData.entries());
+
+    fetch("restservices/onderdelen/" + naam, { method: 'PUT', body: encData })
+    .then(response => response.json())
+    .then(function (myJson) { 
+    	console.log(myJson); 
+    });
+}
 
 function toevoegenOnderdeel() {
     var formData = new FormData(document.querySelector("#onderdeel-toevoegen"));
@@ -108,7 +120,7 @@ function getOnderdelen(page, zoekveld = "") {
 	            			"<td>" + x.naam + "</td>" +
 	            			"<td>" + x.prijs + "</td>" +
 	            			"<td>" + x.beschrijving + "</td>" +
-	            			"<td><button value='" + x.onderdeel_nr + "' id='wijzigButton' type='button'>Wijzig</button></td>" +
+	            			"<td><button value='" + x.naam + "' id='wijzigButton' type='button'>Wijzig</button></td>" +
 	        			"</tr>");
             	}
             }
