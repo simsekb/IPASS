@@ -25,32 +25,28 @@ public class OnderdeelService {
 		return result;
 	}
 	
-	public Onderdeel updateOnderdeel(String naam, String nm, String cap, String reg, double sur, int pop) throws SQLException {
+	public Onderdeel updateOnderdeel(String naam, double prijs, String beschrijving) throws SQLException {
 		Onderdeel o = onderdeelDao.find(naam);
-		o.setNaam(nm);
+		o.setNaam(naam);
+		o.setPrijs(prijs);
+		o.setBeschrijving(beschrijving);
 		if(onderdeelDao.update(o)) {
 			return onderdeelDao.find(naam);
 		}
 		return o;
 	}
 	
-	public boolean deleteOnderdeel(String naam) {
-		boolean verwijderd = false;
+	public void deleteOnderdeel(String naam) {
 		Onderdeel o = onderdeelDao.find(naam);
 		
 		if (o != null) {
-			verwijderd = onderdeelDao.delete(o);
+			onderdeelDao.delete(o);
 		} 
-		else {
-			throw new IllegalArgumentException("Code bestaat niet!");
-		}
-		return verwijderd;	
 	}
 	
-	public Onderdeel saveOnderdeel(String naam, int onderdeel_nr, double prijs, String beschrijving) {
-		Onderdeel c = new Onderdeel (naam, onderdeel_nr, prijs, beschrijving);
+	public Onderdeel saveOnderdeel(String naam, double prijs, String beschrijving) {
+		Onderdeel c = new Onderdeel (naam, 0, prijs, beschrijving); // onderdeel_id cus it's a serial in de db, we won't be using it here
 		c.setNaam(naam);
-		c.setOnderdeel_nr(onderdeel_nr);
 		c.setPrijs(prijs);
 		c.setBeschrijving(beschrijving);
 		onderdeelDao.save(c);

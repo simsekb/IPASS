@@ -49,14 +49,13 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 	public boolean save(Onderdeel onderdeel) {
 		boolean opgeslagen = false;
 
-		String sql = "INSERT INTO onderdeel (naam, onderdeel_nr, prijs, beschrijving) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO onderdeel (naam, prijs, beschrijving) VALUES (?, ?, ?)";
 
 		try (Connection con = super.getConnection()) {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, onderdeel.getNaam());
-			pstmt.setInt(2, onderdeel.getOnderdeel_nr());
-			pstmt.setDouble(3, onderdeel.getPrijs());
-			pstmt.setString(4, onderdeel.getBeschrijving());
+			pstmt.setDouble(2, onderdeel.getPrijs());
+			pstmt.setString(3, onderdeel.getBeschrijving());
 			
 			int result = pstmt.executeUpdate();
 
@@ -79,14 +78,13 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 	public boolean update(Onderdeel onderdeel) throws SQLException {
 		boolean resultaat = false;
 
-		String query = "UPDATE onderdeel SET naam = ?, onderdeel_nr = ?, prijs = ?, beschrijving = ?'" + "WHERE naam = '"+ onderdeel.getNaam() + "'";
+		String query = "UPDATE onderdeel SET naam = ?, prijs = ?, beschrijving = ?'" + "WHERE naam = '"+ onderdeel.getNaam() + "'";
 		try (Connection con = super.getConnection()) {
 			PreparedStatement pstmt = con.prepareStatement(query);
 
 			pstmt.setString(1, onderdeel.getNaam());
-			pstmt.setInt(2, onderdeel.getOnderdeel_nr());
-			pstmt.setDouble(3, onderdeel.getPrijs());
-			pstmt.setString(4, onderdeel.getBeschrijving());
+			pstmt.setDouble(2, onderdeel.getPrijs());
+			pstmt.setString(3, onderdeel.getBeschrijving());
 
 			int result = pstmt.executeUpdate();
 			pstmt.close();

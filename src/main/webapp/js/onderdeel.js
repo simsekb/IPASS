@@ -5,12 +5,11 @@ openOnderdeel("toevoegen");
  * */
 
 $(document).on('click', '#deleteButton', function(e) {
-	//console.log(e.target.value);
 	deleteOnderdeel(e.target.value);
 });
 
 $(document).on('click', '#wijzigButton', function(e) {
-	console.log(e.target.value);
+	//console.log(e.target.value);
 });
 
 $("#toevoegButton").click(function() {
@@ -52,7 +51,18 @@ $("#menu-toggle").click(function(e) {
 });
 
 function toevoegenOnderdeel() {
-	
+    var formData = new FormData(document.querySelector("#onderdeel-toevoegen"));
+    var encData = new URLSearchParams(formData.entries());
+    
+    fetch("restservices/onderdelen", { method: 'POST', body: encData})
+    	.then(function (response) {
+    		alert($("#onderdeelToevoegen_naam").val() + " toegevoegd!");
+    		
+    		$("#onderdeelToevoegen_naam").val("");
+    		$("#onderdeelToevoegen_prijs").val("");
+    		$("#onderdeelToevoegen_beschrijving").val("");
+    		//console.log("toevoegen: ", response);
+    	});
 }
 
 function deleteOnderdeel(onderdeelNaam) {
@@ -84,7 +94,7 @@ function getOnderdelen(page, zoekveld = "") {
 	            			"<td>" + x.naam + "</td>" +
 	            			"<td>" + x.prijs + "</td>" +
 	            			"<td>" + x.beschrijving + "</td>" +
-	            			"<td><button value='" + x.naam + "' id='deleteButton' type='button'>-</button></td>" +
+	            			"<td><button value='" + x.naam + "' id='deleteButton' type='button'>Verwijder</button></td>" +
 	        			"</tr>");
             	}
             }
@@ -107,8 +117,11 @@ function getOnderdelen(page, zoekveld = "") {
             	for (const i in myJson) {
             		const x = myJson[i];
             		
-            		if(zoekveld.Length > 0) {
-            			if(x.naam.contains(zoekveld)) continue;
+            		if(zoekveld.length > 0) {
+//            			console.log("xnaam: " + x.naam);
+//            			console.log("contains: " + x.naam.includes(zoekveld));
+//            			console.log("zoekveld: " + zoekveld);
+            			if(!x.naam.includes(zoekveld)) continue;
             		}
 	            	$("#tableBody-voorraadinzien").append(
 	        			"<tr>" + 

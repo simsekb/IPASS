@@ -3,7 +3,6 @@ package nl.hu.IPASS.ProjectIPASS.webservices;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -31,7 +30,6 @@ public class OnderdeelResource {
 	@GET
 	@Produces("application/json")
 	public String getOnderdelen() {
-		//System.out.println("getOnderdelen");
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		JsonArrayBuilder jab = Json.createArrayBuilder();
 
@@ -51,7 +49,7 @@ public class OnderdeelResource {
 	@GET
 	@Path("{naam}")
 	@Produces("Application/json")
-	public String getCountryInfo(@PathParam("naam") String naam) {
+	public String getOnderdeelInfo(@PathParam("naam") String naam) {
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		Onderdeel onderdeel = service.find(naam);
 
@@ -77,13 +75,12 @@ public class OnderdeelResource {
 	@Produces("application/json")
 	public Response createCountry(@Context SecurityContext sc,
 			@FormParam("naam") String naam,
-			@FormParam("onderdeel_nr") int onderdeel_nr,
 			@FormParam("prijs") double prijs, 
 			@FormParam("beschrijving") String beschrijving) {
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		
-		Onderdeel newOnderdeel = service.saveOnderdeel(naam, onderdeel_nr, prijs, beschrijving);
+		Onderdeel newOnderdeel = service.saveOnderdeel(naam, prijs, beschrijving);
 		if (newOnderdeel == null) {
 			Map<String, String> messages = new HashMap<String, String>();
 			messages.put("error", "Onderdeel does not exist!");
@@ -95,16 +92,12 @@ public class OnderdeelResource {
 	@DELETE
 	@Path("{naam}")
 	@Produces("application/json")
-	public Response deleteCountry(@Context SecurityContext sc, 
-			@PathParam("naam") String naam) {
+	public Response deleteCountry(@Context SecurityContext sc, @PathParam("naam") String naam) {
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 
-		if (service.deleteOnderdeel(naam)) {
-			return Response.ok().build();
-		}
-		Map<String, String> messages = new HashMap<String, String>();
-		messages.put("error", "Er is wat fout gegaan bij het deleten.");
-		return Response.status(409).entity(messages).build();
+		service.deleteOnderdeel(naam);
+		
+		return Response.ok().build();
 	}
 }

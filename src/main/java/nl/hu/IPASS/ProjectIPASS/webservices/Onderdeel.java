@@ -25,10 +25,6 @@ public class Onderdeel {
 		return onderdeel_nr;
 	}
 	
-	public void setOnderdeel_nr(int nr) {
-		this.onderdeel_nr = nr;
-	}
-	
 	public double getPrijs() {
 		return prijs;
 	}

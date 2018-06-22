@@ -5,3 +5,7 @@
 tbody tr td {
 	text-align: center;
 }
+
+.form-box input[type="text"] {
+	text-transform: none;
+}
