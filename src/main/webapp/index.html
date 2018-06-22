@@ -14,6 +14,8 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
     
     <link href="css/login-screen.css" rel="stylesheet">
+    
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -28,10 +30,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Onderdeel toevoegen</a>
-                    <a href="#">Onderdeel verwijderen</a>
-                    <a href="#">Onderdeel wijzigen</a>
-                    <a href="#">Voorraad inzien</a>
+                    <a id="onderdeelToevoegen" href="#">Onderdeel toevoegen</a>
+                    <a id="onderdeelVerwijderen" href="#">Onderdeel verwijderen</a>
+                    <a id="onderdeelWijzigen" href="#">Onderdeel wijzigen</a>
+                    <a id="onderdeelVoorraadInzien" href="#">Voorraad inzien</a>
                     <a href="#" id="logout">Uitloggen</a>
                 </li>
             </ul>
@@ -41,26 +43,90 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1>Beginscherm</h1>
+                <h1>Functioneel paneel</h1>
+               	<p>De functies aan de linkerzijde kunnen gebruikt worden gebruik te maken van het systeem.</p>
+                <div class="onderdeel-toevoegen">
+                	<!-- <p>toevoegen</p> -->
+					<div class="form-box col-lg-5">
+						<form id="onderdeel-toevoegen">
+							<input name="naam" type="text" placeholder="naam">
+							<input name="prijs" type="number" placeholder="prijs">
+							<input name="beschrijving" type="text" placeholder="beschrijving">
+							<button type="button" id="toevoegButton" class="btn btn-info btn-block login">Toevoegen</button>
+						</form>
+					</div>
+                </div>
+                <div class="onderdeel-verwijderen">
+<!--                <p>verwijderen</p> -->
+                	<div class="form-box col-lg-5">
+						<form id="onderdeel-verwijderen">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Naam</th>
+										<th scope="col">Prijs</th>
+										<th scope="col">Beschrijving</th>
+										<th scope="col">-</th>
+									</tr>
+								</thead>
+								<tbody id="tableBody-verwijderen">
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+                <div class="onderdeel-wijzigen">
+                	<!-- <p>wijzigen</p> -->
+                	<div class="form-box col-lg-5">
+						<form id="onderdeel-wijzigen">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Naam</th>
+										<th scope="col">Prijs</th>
+										<th scope="col">Beschrijving</th>
+										<th scope="col">Wijzigen</th>
+									</tr>
+								</thead>
+								<tbody id="tableBody-wijzigen">
+								</tbody>
+							</table>
+						</form>
+					</div>
+                </div>
+                <div class="onderdeel-voorraadinzien">
+                	<!-- <p>voorraadinzien</p> -->
+                	<div class="form-box col-lg-5">
+						<form id="onderdeel-voorraadinzien">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Naam</th>
+										<th scope="col">Prijs</th>
+										<th scope="col">Beschrijving</th>
+									</tr>
+								</thead>
+								<tbody id="tableBody-voorraadinzien">
+								</tbody>
+							</table>
+							<input id="voorraadinzien-zoekbalk" name="zoekopdracht" type="text" placeholder="zoeken..">
+							<button type="button" id="button-voorraadinzien" class="btn btn-info btn-block login">Zoeken</button>
+						</form>
+					</div>
+                </div>
 				<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/ipass.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+    <script src="js/onderdeel.js"></script>
 </body>
 </html>

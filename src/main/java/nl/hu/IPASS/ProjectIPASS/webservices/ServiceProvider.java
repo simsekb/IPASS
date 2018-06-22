@@ -1,9 +1,9 @@
 package nl.hu.IPASS.ProjectIPASS.webservices;
 
 public class ServiceProvider {
-	private static WorldService worldService = new WorldService();
+	private static OnderdeelService onderdeelService = new OnderdeelService();
 
-	public static WorldService getWorldService() {
-		return worldService;
+	public static OnderdeelService getOnderdeelService() {
+		return onderdeelService;
 	}
 }
