@@ -81,8 +81,6 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 		String query = "UPDATE onderdeel SET prijs = ?, beschrijving = ?" + " WHERE naam = '"+ onderdeel.getNaam() + "'";
 		try (Connection con = super.getConnection()) {
 			PreparedStatement pstmt = con.prepareStatement(query);
-			
-			System.out.println("query: " + query);
 
 			//System.out.println("prijs: " + onderdeel.getPrijs() + " | " + onderdeel.getBeschrijving());
 			pstmt.setDouble(1, onderdeel.getPrijs());
