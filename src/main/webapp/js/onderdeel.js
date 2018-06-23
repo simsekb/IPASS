@@ -8,9 +8,15 @@ $(document).on('click', '#deleteButton', function(e) {
 	deleteOnderdeel(e.target.value);
 });
 
-$(document).on('click', '#wijzigButton', function(e) {
-	//console.log(e.target.value);
-	wijzigOnderdeel(e.target.value);
+$(document).on('click', '#wijzigButton', function(e) { //wijzig knop achter regel
+	$("#onderdeelWijzigen_naam").val(e.target.value);
+});
+
+$("#onderdeelWijzigen_button").click(function() { //wijzigen gegevens
+	onderdeelNaam = $("#onderdeelWijzigen_naam").val();
+	if(onderdeelNaam.length > 0 && onderdeelNaam != null) {
+		wijzigOnderdeel(onderdeelNaam);
+	}
 });
 
 $("#toevoegButton").click(function() {
@@ -56,9 +62,8 @@ function wijzigOnderdeel(naam) {
     var encData = new URLSearchParams(formData.entries());
 
     fetch("restservices/onderdelen/" + naam, { method: 'PUT', body: encData })
-    .then(response => response.json())
-    .then(function (myJson) { 
-    	console.log(myJson); 
+    .then(function(response) {
+    	console.log("wijzigen: ", response);
     });
 }
 

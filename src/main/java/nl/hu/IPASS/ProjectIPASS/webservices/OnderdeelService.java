@@ -27,6 +27,7 @@ public class OnderdeelService {
 	
 	public Onderdeel updateOnderdeel(String naam, double prijs, String beschrijving) throws SQLException {
 		Onderdeel o = onderdeelDao.find(naam);
+		System.out.println(o.getNaam());
 		o.setNaam(naam);
 		o.setPrijs(prijs);
 		o.setBeschrijving(beschrijving);

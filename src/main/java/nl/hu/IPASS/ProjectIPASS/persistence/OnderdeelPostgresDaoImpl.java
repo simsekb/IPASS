@@ -78,13 +78,15 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 	public boolean update(Onderdeel onderdeel) throws SQLException {
 		boolean resultaat = false;
 
-		String query = "UPDATE onderdeel SET naam = ?, prijs = ?, beschrijving = ?'" + "WHERE naam = '"+ onderdeel.getNaam() + "'";
+		String query = "UPDATE onderdeel SET prijs = ?, beschrijving = ?" + " WHERE naam = '"+ onderdeel.getNaam() + "'";
 		try (Connection con = super.getConnection()) {
 			PreparedStatement pstmt = con.prepareStatement(query);
+			
+			System.out.println("query: " + query);
 
-			pstmt.setString(1, onderdeel.getNaam());
-			pstmt.setDouble(2, onderdeel.getPrijs());
-			pstmt.setString(3, onderdeel.getBeschrijving());
+			//System.out.println("prijs: " + onderdeel.getPrijs() + " | " + onderdeel.getBeschrijving());
+			pstmt.setDouble(1, onderdeel.getPrijs());
+			pstmt.setString(2, onderdeel.getBeschrijving());
 
 			int result = pstmt.executeUpdate();
 			pstmt.close();

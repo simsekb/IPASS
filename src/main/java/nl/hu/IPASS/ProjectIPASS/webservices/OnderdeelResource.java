@@ -75,6 +75,7 @@ public class OnderdeelResource {
 	}
 	
 	@PUT
+	@Path("{naam}")
 	@Produces("application/json")
 	public Response updateOnderdeel(@Context SecurityContext sc,
 			@FormParam("naam") String naam,
