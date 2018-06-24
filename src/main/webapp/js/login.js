@@ -30,5 +30,10 @@ function login() {
             window.location.href = "home.html";
             $("#errorline").addClass('d-none');
             openOnderdeel("toevoegen");
+        })
+        .catch(function(error) {
+        	if(error.response) {
+        		console.log("Error: " + error);
+        	}
         });
 }

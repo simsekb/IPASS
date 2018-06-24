@@ -80,7 +80,7 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 			} 
 			else {
 				opgeslagen = true;
-				System.out.println("Insert voltooid voor onderdeel : " + onderdeel.getNaam() + "\n");
+				//System.out.println("Insert voltooid voor onderdeel : " + onderdeel.getNaam() + "\n");
 			}
 
 		} 

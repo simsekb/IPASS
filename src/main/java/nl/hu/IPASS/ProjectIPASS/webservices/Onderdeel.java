@@ -1,6 +1,11 @@
 package nl.hu.IPASS.ProjectIPASS.webservices;
 
 public class Onderdeel {
+	
+	/*
+	 * Initialisatie van de variabelen van de class Onderdeel
+	 */
+	
 	private String naam;
 	private int onderdeel_nr;
 	private double prijs;

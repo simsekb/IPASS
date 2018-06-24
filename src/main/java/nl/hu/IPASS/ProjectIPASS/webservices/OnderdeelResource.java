@@ -90,8 +90,12 @@ public class OnderdeelResource {
 	@Produces("application/json")
 	public Response updateOnderdeel(@Context SecurityContext sc,
 			@FormParam("naam") String naam,
-			@FormParam("prijs") double prijs, 
+			@FormParam("prijs") Double prijs, 
 			@FormParam("beschrijving") String beschrijving) throws SQLException {
+		
+		if(naam.length() <= 0 && prijs != null && beschrijving.length() <= 0) { // als de velden niet/incorrect zijn ingevuld gaat de opdracht niet door
+			return Response.status(403).build();
+		}
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		
@@ -113,8 +117,12 @@ public class OnderdeelResource {
 	@Produces("application/json")
 	public Response createOnderdeel(@Context SecurityContext sc,
 			@FormParam("naam") String naam,
-			@FormParam("prijs") double prijs, 
+			@FormParam("prijs") Double prijs, 
 			@FormParam("beschrijving") String beschrijving) {
+		
+		if(naam.length() <= 0 && prijs != null && beschrijving.length() <= 0) { // als de velden niet/incorrect zijn ingevuld gaat de opdracht niet door
+			return Response.status(403).build();
+		}
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		

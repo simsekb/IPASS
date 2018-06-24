@@ -30,6 +30,9 @@ public class AuthenticationResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response authenticateUser(@FormParam("username") String username, @FormParam("password") String password) {
+		
+		username = username.toLowerCase(); // decapitalize username and password for login
+		password = password.toLowerCase();
 		try {
 			// Authenticate the user against the database
 			UserDao dao = new UserDao();
@@ -43,10 +46,13 @@ public class AuthenticationResource {
 			
 			SimpleEntry<String, String> JWT = new SimpleEntry<String, String>("JWT", token);
 			
+			//System.out.print("[good] naam: " + username + " | " + "password: " + password + "\n");
+			
 			return Response.ok(JWT).build();
 			
 		} 
 		catch (JwtException | IllegalArgumentException e) {
+			//System.out.print("[wrong] naam: " + username + " | " + "password: " + password + "\n");
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 	}
