@@ -4,6 +4,6 @@ GitHub link: https://github.com/kostikoglu/IPASS
 
 Gebruikersgegevens: 
 
-Berkay, test
+Gebruikersnaam: 'Berkay', Wachtwoord: 'test'.
 
 Meeste acties op de site spreken voor zich. Doen ze dat niet dan staat er een duidelijke omschrijving bij.
