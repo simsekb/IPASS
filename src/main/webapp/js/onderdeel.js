@@ -1,6 +1,6 @@
-//if(window.sessionStorage.getItem("myJWT") == null) {
-//	window.location.href = "index.html";
-//}
+if(window.sessionStorage.getItem("myJWT") == null) {
+	window.location.href = "index.html";
+}
 
 openOnderdeel("toevoegen"); //bij openen scherm eerste keer bij toevoegen terechtkomen
 

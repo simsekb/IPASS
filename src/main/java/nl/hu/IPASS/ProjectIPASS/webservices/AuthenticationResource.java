@@ -35,6 +35,10 @@ public class AuthenticationResource {
 			UserDao dao = new UserDao();
 			String role = dao.findRoleForUser(username, password);
 			
+			if (role == null) {
+				throw new IllegalArgumentException("No user found!");
+			}
+			
 			String token = createToken(username, role);
 			
 			SimpleEntry<String, String> JWT = new SimpleEntry<String, String>("JWT", token);
