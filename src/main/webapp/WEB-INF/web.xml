@@ -24,4 +24,8 @@
 		<servlet-name>Jersey REST Service</servlet-name>
 		<url-pattern>/restservices/*</url-pattern>
 	</servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
 </web-app>
