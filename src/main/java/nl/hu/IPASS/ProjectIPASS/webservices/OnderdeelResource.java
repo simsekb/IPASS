@@ -101,10 +101,6 @@ public class OnderdeelResource {
 			@FormParam("prijs") double prijs, 
 			@FormParam("beschrijving") String beschrijving) {
 		
-		System.out.print("naam: " + naam);
-		System.out.print("prijs: " + prijs);
-		System.out.print("beschrijving" + beschrijving);
-		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 		
 		Onderdeel newOnderdeel = service.saveOnderdeel(naam, prijs, beschrijving);

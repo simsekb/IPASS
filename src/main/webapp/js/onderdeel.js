@@ -4,32 +4,32 @@ openOnderdeel("toevoegen");
  * Clickables Tabel Toevoegen/Verwijderen/Wijzigen
  * */
 
-$(document).on('click', '#deleteButton', function(e) {
+$(document).on('click', '#deleteButton', function(e) { //knop verwijderen onderdeel
 	deleteOnderdeel(e.target.value);
 });
 
-$(document).on('click', '#wijzigButton', function(e) { //wijzig knop achter regel
+$(document).on('click', '#wijzigButton', function(e) { //knop wijzigen onderdeel
 	$("#onderdeelWijzigen_naam").val(e.target.value);
 });
 
-$("#onderdeelWijzigen_button").click(function() { //wijzigen gegevens
+$("#onderdeelWijzigen_button").click(function() { //knop opslaan bij wijzig scherm
 	onderdeelNaam = $("#onderdeelWijzigen_naam").val();
 	if(onderdeelNaam.length > 0 && onderdeelNaam != null) {
 		wijzigOnderdeel(onderdeelNaam);
 	}
 });
 
-$("#toevoegButton").click(function() {
+$("#toevoegButton").click(function() { //knop toevoegen onderdeel
 	toevoegenOnderdeel();
 });
 
-$("#button-voorraadinzien").click(function() {
+$("#button-voorraadinzien").click(function() { //knop zoeken voorraadinzien scherm
 	zoekopdracht = $("#voorraadinzien-zoekbalk").val();
 	getOnderdelen("voorraadinzien", zoekopdracht);
 });
 
 /*
- * Menu links
+ * Menu links aan linkerzijde van scherm
  */
 
 $("#onderdeelToevoegen").click(function() {
@@ -57,13 +57,39 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 
+/*
+ * Functies mbt ophalen/versturen van gegevens
+ */
+
+function clearFields(pagina) {
+	if(pagina == "wijzigen") {
+		$("#onderdeelWijzigen_naam").val("");
+		$("#onderdeelWijzigen_prijs").val("");
+		$("#onderdeelWijzigen_beschrijving").val("");
+	}
+	else if(pagina == "toevoegen") {
+		$("#onderdeelToevoegen_naam").val("");
+		$("#onderdeelToevoegen_prijs").val("");
+		$("#onderdeelToevoegen_beschrijving").val("");
+	}
+}
+
 function wijzigOnderdeel(naam) {
     var formData = new FormData(document.querySelector("#onderdeel-wijzigen"));
     var encData = new URLSearchParams(formData.entries());
 
     fetch("restservices/onderdelen/" + naam, { method: 'PUT', body: encData })
     .then(function(response) {
-    	console.log("wijzigen: ", response);
+    	//console.log("wijzigen: ", response);
+    	if(response.ok) {
+    		alert(naam + " is gewijzigd!");
+    	}
+    	else {
+    		alert("Fout bij wijzigen!");
+    	}
+    	clearFields("wijzigen");
+		
+		openOnderdeel("wijzigen");
     });
 }
 
@@ -73,12 +99,14 @@ function toevoegenOnderdeel() {
     
     fetch("restservices/onderdelen", { method: 'POST', body: encData})
     	.then(function (response) {
-    		alert($("#onderdeelToevoegen_naam").val() + " toegevoegd!");
+    		if(response.ok) {
+    			alert($("#onderdeelToevoegen_naam").val() + " toegevoegd!");
+    		}
+    		else {
+    			alert("Fout bij wijzigen!");
+    		}
     		
-    		$("#onderdeelToevoegen_naam").val("");
-    		$("#onderdeelToevoegen_prijs").val("");
-    		$("#onderdeelToevoegen_beschrijving").val("");
-    		//console.log("toevoegen: ", response);
+    		clearFields("toevoegen");
     	});
 }
 
@@ -135,9 +163,6 @@ function getOnderdelen(page, zoekveld = "") {
             		const x = myJson[i];
             		
             		if(zoekveld.length > 0) {
-//            			console.log("xnaam: " + x.naam);
-//            			console.log("contains: " + x.naam.includes(zoekveld));
-//            			console.log("zoekveld: " + zoekveld);
             			if(!x.naam.includes(zoekveld)) continue;
             		}
 	            	$("#tableBody-voorraadinzien").append(
