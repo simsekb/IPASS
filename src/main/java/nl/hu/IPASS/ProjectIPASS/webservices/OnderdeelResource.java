@@ -142,7 +142,7 @@ public class OnderdeelResource {
 	@DELETE
 	@Path("{naam}")
 	@Produces("application/json")
-	public Response deleteCountry(@Context SecurityContext sc, @PathParam("naam") String naam) {
+	public Response deleteOnderdeel(@Context SecurityContext sc, @PathParam("naam") String naam) {
 		
 		OnderdeelService service = ServiceProvider.getOnderdeelService();
 
