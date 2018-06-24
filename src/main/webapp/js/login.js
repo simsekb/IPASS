@@ -1,4 +1,6 @@
-console.log("JWT login: " + window.sessionStorage.getItem("myJWT"));
+//console.log("JWT login: " + window.sessionStorage.getItem("myJWT"));
+
+$("#wrapper").toggleClass("toggled");
 
 $("#login").click(function() {
 	login();
