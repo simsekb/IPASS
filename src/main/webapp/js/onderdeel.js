@@ -210,5 +210,5 @@ function openOnderdeel(onderdeel) { //functie voor het openen van de onderdelen
 
 function logout() { //logging out
     window.sessionStorage.removeItem("myJWT");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }

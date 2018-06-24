@@ -14,8 +14,6 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
     
     <link href="css/login-screen.css" rel="stylesheet">
-    
-    <link href="css/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -30,11 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a id="onderdeelToevoegen" href="#">Onderdeel toevoegen</a>
-                    <a id="onderdeelVerwijderen" href="#">Onderdeel verwijderen</a>
-                    <a id="onderdeelWijzigen" href="#">Onderdeel wijzigen</a>
-                    <a id="onderdeelVoorraadInzien" href="#">Voorraad inzien</a>
-                    <a href="#" id="logout">Uitloggen</a>
+                    <a href="#">Login</a>
                 </li>
             </ul>
         </div>
@@ -43,95 +37,32 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <h1>Functioneel paneel</h1>
-               	<p>De functies aan de linkerzijde kunnen gebruikt worden gebruik te maken van het systeem.</p>
-                <div class="onderdeel-toevoegen">
-                	<!-- <p>toevoegen</p> -->
-					<div class="form-box col-lg-8">
-						<form id="onderdeel-toevoegen">
-							<input id="onderdeelToevoegen_naam" name="naam" type="text" placeholder="naam">
-							<input id="onderdeelToevoegen_prijs" name="prijs" type="number" placeholder="prijs">
-							<input id="onderdeelToevoegen_beschrijving" name="beschrijving" type="text" placeholder="beschrijving">
-							<button type="button" id="toevoegButton" class="btn btn-info btn-block login">Toevoegen</button>
-						</form>
-					</div>
-                </div>
-                <div class="onderdeel-verwijderen">
-<!--                <p>verwijderen</p> -->
-                	<div class="form-box col-lg-8">
-						<form id="onderdeel-verwijderen">
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">Naam</th>
-										<th scope="col">Prijs</th>
-										<th scope="col">Beschrijving</th>
-										<th scope="col">Verwijderen</th>
-									</tr>
-								</thead>
-								<tbody id="tableBody-verwijderen">
-								</tbody>
-							</table>
-						</form>
+                <h1>Medewerkers omgeving</h1>
+				<div class="container">
+					<div class="login-container">
+						<div id="output"></div>
+						<div class="avatar"></div>
+						<div class="form-box">
+							<form id="loginForm">
+								<input name="username" type="text" placeholder="username"> 
+								<input name="password" type="password" placeholder="password">
+								<span id="errorline" class="error text-danger d-none">Wrong username/password combination.</span>
+								<button type="button" id="login" class="btn btn-info btn-block login">Login</button>
+							</form>
+						</div>
 					</div>
 				</div>
-                <div class="onderdeel-wijzigen">
-                	<!-- <p>wijzigen</p> -->
-                	<div class="form-box col-lg-8">
-						<form id="onderdeel-wijzigen">
-							<p id="onderdeelWijzigenText"></p>
-							<input id="onderdeelWijzigen_naam" name="naam" type="text" placeholder="naam" readonly>
-							<input id="onderdeelWijzigen_prijs" name="prijs" type="number" placeholder="prijs">
-							<input id="onderdeelWijzigen_beschrijving" name="beschrijving" type="text" placeholder="beschrijving">
-							<button type="button" id="onderdeelWijzigen_button" class="btn btn-info btn-block login">Wijzig doorvoeren</button>
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">Naam</th>
-										<th scope="col">Prijs</th>
-										<th scope="col">Beschrijving</th>
-										<th scope="col">Wijzigen</th>
-									</tr>
-								</thead>
-								<tbody id="tableBody-wijzigen">
-								</tbody>
-							</table>
-						</form>
-					</div>
-                </div>
-                <div class="onderdeel-voorraadinzien">
-                	<!-- <p>voorraadinzien</p> -->
-                	<div class="form-box col-lg-8">
-						<form id="onderdeel-voorraadinzien">
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">Naam</th>
-										<th scope="col">Prijs</th>
-										<th scope="col">Beschrijving</th>
-									</tr>
-								</thead>
-								<tbody id="tableBody-voorraadinzien">
-								</tbody>
-							</table>
-							<input id="voorraadinzien-zoekbalk" name="zoekopdracht" type="text" placeholder="zoeken..">
-							<button type="button" id="button-voorraadinzien" class="btn btn-info btn-block login">Zoeken</button>
-						</form>
-					</div>
-                </div>
 				<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
+
     </div>
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/onderdeel.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

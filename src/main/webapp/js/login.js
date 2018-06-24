@@ -14,7 +14,7 @@ function login() {
     fetch("restservices/authentication", { method: 'POST', body: encData })
         .then(function(response) {
             if (response.ok) {
-                window.location.href = "index.html";
+                window.location.href = "home.html";
                 //console.log("Login successful.");
                 $("#errorline").addClass('d-none');
                 openOnderdeel("toevoegen");
