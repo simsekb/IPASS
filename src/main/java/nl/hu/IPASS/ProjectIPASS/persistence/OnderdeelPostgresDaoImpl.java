@@ -12,6 +12,10 @@ import nl.hu.IPASS.ProjectIPASS.webservices.Onderdeel;
 
 public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements OnderdeelDao {
 	
+	/*
+	 * Functie dat het makkelijk maakt om de queries onder deze functie toe te passen op de db
+	 */
+	
 	private List<Onderdeel> selectOnderdeel(String query) {
 		List<Onderdeel> results = new ArrayList<Onderdeel>();
 
@@ -35,15 +39,27 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 		return results;
 	}
 	
+	/*
+	 * Het vinden van alle elementen in tabel onderdeel
+	 */
+	
 	@Override
 	public List<Onderdeel> findAll() {
 		return selectOnderdeel("SELECT naam, onderdeel_nr, prijs, beschrijving FROM onderdeel");
 	}
 	
+	/*
+	 * Het vinden van 1 specifiek onderdeel
+	 */
+	
 	@Override
 	public Onderdeel find(String naam) {
 		return selectOnderdeel("SELECT naam, onderdeel_nr, prijs, beschrijving FROM onderdeel WHERE naam = '"+ naam + "'").get(0);
 	}
+	
+	/*
+	 * Gegevens toevoegen aan tabel onderdeel
+	 */
 	
 	@Override
 	public boolean save(Onderdeel onderdeel) {
@@ -74,6 +90,10 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 		return opgeslagen;
 	}
 	
+	/*
+	 * Updaten van de gegevens in de tabel
+	 */
+	
 	@Override
 	public boolean update(Onderdeel onderdeel) throws SQLException {
 		boolean resultaat = false;
@@ -97,6 +117,10 @@ public class OnderdeelPostgresDaoImpl extends PostgresBaseDao implements Onderde
 		return resultaat;
 	}
 
+	/*
+	 * Het verwijderen van de gegevens in de tabel
+	 */
+	
 	@Override
 	public boolean delete(Onderdeel onderdeel) {
 		boolean result = false;

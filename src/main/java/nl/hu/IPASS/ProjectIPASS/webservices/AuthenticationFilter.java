@@ -17,6 +17,11 @@ import io.jsonwebtoken.Jwts;
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
+	
+	/*
+	 * Authenticatie DMV JWT token
+	 */
+	
 	@Override
 	public void filter(ContainerRequestContext requestCtx) throws IOException {
 		boolean isSecure = requestCtx.getSecurityContext().isSecure();

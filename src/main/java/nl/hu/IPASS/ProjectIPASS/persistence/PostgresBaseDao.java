@@ -11,6 +11,11 @@ public class PostgresBaseDao {
 	private static DataSource connectionPool;
 
 	public PostgresBaseDao() {
+		
+		/*
+		 * Gegevens van de database 
+		 */
+		
 		if (connectionPool == null) {
 			try {
 				final String DATABASE_URL_PROP = System.getenv("DATABASE_URL");

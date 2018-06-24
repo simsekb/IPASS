@@ -7,6 +7,10 @@ import java.sql.Statement;
 
 public class UserDao extends PostgresBaseDao {
 	
+	/*
+	 * Het ophalen van een rol van een gebruiker
+	 */
+	
 	public String findRoleForUser(String username, String password) {
 		String query = ("select role from users where gebruikersnaam= '" + username + "'and wachtwoord = '" + password+ "'");
 		String rol = null;

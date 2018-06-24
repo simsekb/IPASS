@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.security.RolesAllowed;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -30,6 +29,10 @@ import javax.ws.rs.core.Response;
 @Path("/onderdelen")
 public class OnderdeelResource {
 	
+	/*
+	 * GET request voor het ophalen van de onderdelen
+	 */
+	
 	@GET
 	@Produces("application/json")
 	public String getOnderdelen() {
@@ -48,6 +51,10 @@ public class OnderdeelResource {
 		JsonArray array = jab.build();
 		return array.toString();
 	}
+	
+	/*
+	 * GET request voor het ophalen van een specifiek onderdeel
+	 */
 	
 	@GET
 	@Path("{naam}")
@@ -74,6 +81,10 @@ public class OnderdeelResource {
 		return array.toString();
 	}
 	
+	/*
+	 * PUT request voor het wijzigen van de gegevens
+	 */
+	
 	@PUT
 	@Path("{naam}")
 	@Produces("application/json")
@@ -94,6 +105,10 @@ public class OnderdeelResource {
 		return Response.ok(onderdeel).build();
 	}
 	
+	/*
+	 * POST request voor het invoeren van gegevens
+	 */
+	
 	@POST
 	@Produces("application/json")
 	public Response createOnderdeel(@Context SecurityContext sc,
@@ -111,6 +126,10 @@ public class OnderdeelResource {
 		}
 		return Response.ok().build();
 	}
+	
+	/*
+	 * DELETE request voor het verwijderen van de gegevens
+	 */
 	
 	@DELETE
 	@Path("{naam}")

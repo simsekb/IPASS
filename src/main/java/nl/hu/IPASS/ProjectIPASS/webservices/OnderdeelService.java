@@ -9,9 +9,17 @@ import nl.hu.IPASS.ProjectIPASS.persistence.OnderdeelPostgresDaoImpl;
 public class OnderdeelService {
 	OnderdeelDao onderdeelDao = new OnderdeelPostgresDaoImpl();
 	
+	/*
+	 * Alle onderdelen vinden
+	 */
+	
 	public List<Onderdeel> getAllOnderdelen() {
 		return onderdeelDao.findAll();
 	}
+	
+	/*
+	 * Het vinden van een onderdeel
+	 */
 	
 	public Onderdeel find(String naam) {
 		Onderdeel result = null;
@@ -25,6 +33,10 @@ public class OnderdeelService {
 		return result;
 	}
 	
+	/*
+	 * Updaten van een onderdeel
+	 */
+	
 	public Onderdeel updateOnderdeel(String naam, double prijs, String beschrijving) throws SQLException {
 		Onderdeel o = onderdeelDao.find(naam);
 		o.setNaam(naam);
@@ -36,6 +48,10 @@ public class OnderdeelService {
 		return o;
 	}
 	
+	/*
+	 * Verwijderen onderdelen
+	 */
+	
 	public void deleteOnderdeel(String naam) {
 		Onderdeel o = onderdeelDao.find(naam);
 		
@@ -43,6 +59,10 @@ public class OnderdeelService {
 			onderdeelDao.delete(o);
 		} 
 	}
+	
+	/*
+	 * Opslaan van onderdelen
+	 */
 	
 	public Onderdeel saveOnderdeel(String naam, double prijs, String beschrijving) {
 		Onderdeel c = new Onderdeel (naam, 0, prijs, beschrijving); // onderdeel_id cus it's a serial in de db, we won't be using it here

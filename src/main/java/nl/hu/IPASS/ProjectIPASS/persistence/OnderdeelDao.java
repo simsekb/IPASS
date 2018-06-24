@@ -6,6 +6,11 @@ import java.util.List;
 import nl.hu.IPASS.ProjectIPASS.webservices.Onderdeel;
 
 public interface OnderdeelDao {
+	
+	/*
+	 * Alle beschikbare functies in de DAOimplement
+	 */
+	
 	public boolean save (Onderdeel onderdeel);
 	public List<Onderdeel> findAll();
 	public Onderdeel find(String naam);

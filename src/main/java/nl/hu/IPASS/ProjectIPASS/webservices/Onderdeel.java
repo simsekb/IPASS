@@ -13,6 +13,10 @@ public class Onderdeel {
 		this.beschrijving = beschrijving;
 	}
 	
+	/*
+	 * Getters en setters voor object onderdeel
+	 */
+	
 	public String getNaam() {
 		return naam;
 	}

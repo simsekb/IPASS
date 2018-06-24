@@ -21,6 +21,10 @@ import nl.hu.IPASS.ProjectIPASS.persistence.UserDao;
 @Path("/authentication")
 public class AuthenticationResource {
 	final static public Key key = MacProvider.generateKey();
+	
+	/*
+	 * Authenticatie voor het inloggen
+	 */
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -45,6 +49,10 @@ public class AuthenticationResource {
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 	}
+	
+	/*
+	 * Aanmaken JWT
+	 */
 
 	private String createToken(String username, String role) throws JwtException {
 		Calendar expiration = Calendar.getInstance();

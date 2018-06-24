@@ -1,4 +1,4 @@
-openOnderdeel("toevoegen");
+openOnderdeel("toevoegen"); //bij openen scherm eerste keer bij toevoegen terechtkomen
 
 /* 
  * Clickables Tabel Toevoegen/Verwijderen/Wijzigen
@@ -61,7 +61,7 @@ $("#menu-toggle").click(function(e) {
  * Functies mbt ophalen/versturen van gegevens
  */
 
-function clearFields(pagina) {
+function clearFields(pagina) { //legen van de invoervelden
 	if(pagina == "wijzigen") {
 		$("#onderdeelWijzigen_naam").val("");
 		$("#onderdeelWijzigen_prijs").val("");
@@ -74,7 +74,7 @@ function clearFields(pagina) {
 	}
 }
 
-function wijzigOnderdeel(naam) {
+function wijzigOnderdeel(naam) { //wijzigenonderdeel
     var formData = new FormData(document.querySelector("#onderdeel-wijzigen"));
     var encData = new URLSearchParams(formData.entries());
 
@@ -93,7 +93,7 @@ function wijzigOnderdeel(naam) {
     });
 }
 
-function toevoegenOnderdeel() {
+function toevoegenOnderdeel() { //toevoegen onderdeel
     var formData = new FormData(document.querySelector("#onderdeel-toevoegen"));
     var encData = new URLSearchParams(formData.entries());
     
@@ -110,7 +110,7 @@ function toevoegenOnderdeel() {
     	});
 }
 
-function deleteOnderdeel(onderdeelNaam) {
+function deleteOnderdeel(onderdeelNaam) { //verwijderen van een onderdeel
 	//console.log("clicked button val: " + onderdeelNaam);
 	
     var formData = new FormData(document.querySelector("#onderdeel-verwijderen"));
@@ -125,7 +125,7 @@ function deleteOnderdeel(onderdeelNaam) {
     });
 }
 
-function getOnderdelen(page, zoekveld = "") {
+function getOnderdelen(page, zoekveld = "") { //post,get,put requests met de fetch api
     fetch("restservices/onderdelen", { method: 'GET', headers: {'Authorization': 'Bearer ' + window.sessionStorage.getItem("myJWT")} })
         .then(response => response.json())
         .then(function (myJson) {
@@ -177,7 +177,7 @@ function getOnderdelen(page, zoekveld = "") {
         });
 }
 
-function openOnderdeel(onderdeel) {
+function openOnderdeel(onderdeel) { //functie voor het openen van de onderdelen
 	if(onderdeel == "toevoegen") {
 		$(".onderdeel-toevoegen").removeClass('d-none');
 		$(".onderdeel-verwijderen").addClass('d-none');
@@ -208,7 +208,7 @@ function openOnderdeel(onderdeel) {
 	}
 }
 
-function logout() {
+function logout() { //logging out
     window.sessionStorage.removeItem("myJWT");
     window.location.href = "login.html";
 }
