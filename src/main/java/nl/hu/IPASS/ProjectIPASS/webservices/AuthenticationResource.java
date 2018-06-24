@@ -34,9 +34,6 @@ public class AuthenticationResource {
 			// Authenticate the user against the database
 			UserDao dao = new UserDao();
 			String role = dao.findRoleForUser(username, password);
-			if (role == null) {
-				throw new IllegalArgumentException("No user found!");
-			}
 			
 			String token = createToken(username, role);
 			
