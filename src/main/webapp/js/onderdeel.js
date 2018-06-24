@@ -215,7 +215,8 @@ function openOnderdeel(onderdeel) { //functie voor het openen van de onderdelen
 		$(".onderdeel-verwijderen").addClass('d-none');
 		$(".onderdeel-wijzigen").addClass('d-none');
 		getOnderdelen("voorraadinzien");
-		$("#beschrijvingsText").html("De functies aan de linkerzijde kunnen gebruikt worden gebruik te maken van het systeem.");
+		$("#beschrijvingsText").html("De functies aan de linkerzijde kunnen gebruikt worden gebruik te maken van het systeem. " +
+				"Er wordt gezocht naar de naam van een onderdeel. Dit is <b>hoofdletter</b> gevoelig.");
 	}
 }
 
