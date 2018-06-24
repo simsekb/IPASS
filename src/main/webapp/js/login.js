@@ -1,3 +1,5 @@
+console.log("JWT login: " + window.sessionStorage.getItem("myJWT"));
+
 $("#login").click(function() {
 	login();
 	});
@@ -14,18 +16,17 @@ function login() {
     fetch("restservices/authentication", { method: 'POST', body: encData })
         .then(function(response) {
             if (response.ok) {
-                window.location.href = "home.html";
-                //console.log("Login successful.");
-                $("#errorline").addClass('d-none');
-                openOnderdeel("toevoegen");
                 return response.json();
             }
             else {
             	$("#errorline").removeClass('d-none');
-                //console.log("Login failed.");
-                // document.querySelector("#error").style.display = 'block';
             }
         })
-        .then(myJson => window.sessionStorage.setItem("myJWT", myJson.JWT))
-        .catch(error => console.log(error));
+        .then(function(myJson) {
+        	window.sessionStorage.setItem("myJWT", myJson.JWT);
+        	
+            window.location.href = "home.html";
+            $("#errorline").addClass('d-none');
+            openOnderdeel("toevoegen");
+        });
 }
