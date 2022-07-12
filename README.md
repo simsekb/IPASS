@@ -1,6 +1,6 @@
 # IPASS - Fictive Car dealership 'De Rooie'
 
-This is an end year's project for the Hogeschool in Utrecht for Software Developers. It's a UI for employees on a fictive car dealership called 'Garage de Rooie'.
+This is an end year's project for the Hogeschool in Utrecht for Software Developers. It's stock management tool for employees of a fictive car dealership called 'Garage de Rooie'.
 
 The link to the website hosted on Heroku: https://heroku-ipass-bsimsek.herokuapp.com
 
