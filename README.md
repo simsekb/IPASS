@@ -1,4 +1,4 @@
-## IPASS - Fictive Car dealership 'De Rooie'
+# IPASS - Fictive Car dealership 'De Rooie'
 
 This is an end year's project for the Hogeschool in Utrecht for Software Developers. It's a UI for employees on a fictive car dealership called 'Garage de Rooie'.
 
