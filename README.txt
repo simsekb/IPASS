@@ -1,7 +1,9 @@
-Gebruiksaanwijzing voor https://heroku-ipass-bsimsek.herokuapp.com
+#IPASS - Fictive Car dealership 'De Rooie'
 
-Gebruikersgegevens: 
+This is an end year's project for the Hogeschool in Utrecht for Software Developers. It's a UI for employees on a fictive car dealership called 'Garage de Rooie'.
 
-Gebruikersnaam: 'berkay', Wachtwoord: 'test'.
+The link to the website hosted on Heroku: https://heroku-ipass-bsimsek.herokuapp.com
 
-Meeste acties op de site spreken voor zich. Is dat niet het geval, dan staat er een duidelijke omschrijving bij.
+Test user credentials: 
+
+Login: Username: 'berkay', Password: 'test', in order to login and browse the website.
